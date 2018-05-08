@@ -12,6 +12,7 @@ Template NPC for TrinityCore 3.3.5
 6. Open TrinityCore.sln and Build the solution (Ctrl+Shift+B)  
   
   
+## Screenshot
 ![alt tag](https://image.ibb.co/nGfeYn/template_Npc.png)  
   
 Video Showcase:  
