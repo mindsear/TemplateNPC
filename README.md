@@ -11,7 +11,7 @@ Right above `RBAC_PERM_MAX` add
   
 ## How to install  
 1. Copy TemplateNPC.cpp and TemplateNPC.h to your source folder (TrinityCore\src\server\scripts\Custom)  
-2. Copy template_npc.patch to your TrinityCore root folder.
+2. Copy template_npc.patch to your TrinityCore root folder. (https://image.ibb.co/fwKbPy/tc_root_folder.png)
 3. Apply the patch using git bash console. The command is 
     **patch -p1 <template_npc.patch**  
 4. Use CMake (configure and generate)  
