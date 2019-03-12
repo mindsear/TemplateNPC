@@ -27,3 +27,6 @@ Copy **TemplateNPC.cpp** and **TemplateNPC.h** to your **TemplateNPC** folder yo
   
 Video Showcase:  
 https://streamable.com/yxv1m
+
+
+**NOTE:** You can use **.templatenpc reload** command if you changed template gear, talents, glyphs. So you don't have to restart your server.
