@@ -3,19 +3,11 @@ Template NPC for TrinityCore 3.3.5
   
   
 ## How to install  
-1. Copy TemplateNPC.cpp and TemplateNPC.h to your source folder (TrinityCore\src\server\scripts\Custom)  
-2. Copy template_npc.patch to your TrinityCore root folder. (https://image.ibb.co/fwKbPy/tc_root_folder.png)
-3. Apply the patch using git bash console. The command is 
-    **patch -p1 <template_npc.patch**  
-4. Use CMake (configure and generate)  
-5. Execute characters.sql to your database  
-6. **UPDATE:** You must edit Rbac.h found in TrinityCore\src\server\game\Accounts  
-Right above `RBAC_PERM_MAX` add  
-```c++
-    // custom permissions 1000+
-    RBAC_PERM_COMMAND_RELOAD_TEMPLATE_NPC                    = 1019,  
-```  
-7. Open TrinityCore.sln and Build the solution (Ctrl+Shift+B)  
+1. Copy **TemplateNPC.cpp** and **TemplateNPC.h** to your source folder (TrinityCore\src\server\scripts\Custom)  
+2. Add it to /src/server/scripts/Custom/**custom_script_loader.cpp**  (https://i.ibb.co/VHm8PjH/custom-script-loader.png)
+3. Use CMake (configure and generate)  
+4. Execute **characters.sql** to your database  
+5. Open TrinityCore.sln and Build the solution (Ctrl+Shift+B)  
   
 
   
