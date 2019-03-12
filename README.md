@@ -1,7 +1,7 @@
 # TemplateNPC
-Template NPC for TrinityCore 3.3.5  
-  
-  
+Template NPC for TrinityCore 3.3.5  (Updated 10-March-2019)  
+
+
 ## How to install  
 **1.** Navigate to your **TrinityCore\src\server\scripts\Custom** and make a new folder called **TemplateNPC**.  
 Copy **TemplateNPC.cpp** and **TemplateNPC.h** to your **TemplateNPC** folder you just created.  (this is optional but I recommend it just to keep things organized)<br/>
