@@ -12,7 +12,7 @@ INSERT INTO `npc_text` (`ID`, `text0_0`, `text0_1`) VALUES
 (55002, 'Here you can select a character template which will Gear, Gem, Spec, and finish glyphs for your toon instantly.\r\n\r\nSelect your spec:', 'Here you can select a character template which will Gear, Gem, Spec, and finish glyphs for your toon instantly.\r\n\r\nSelect your spec:');
 
 INSERT INTO `command` (`name`, `permission`, `help`) VALUES 
-('reload templatenpc', 607, 'Syntax: .reload templatenpc\nType .reload templatenpc to reload TemplateNPC custom script.');
+('templatenpc reload', 607, 'Syntax: .templatenpc reload\nType .templatenpc reload to reload TemplateNPC custom script.');
 
 Use characters;
 
