@@ -12,6 +12,7 @@
 #include "GossipDef.h"
 #include "Creature.h"
 #include "ObjectMgr.h"
+#include "Chat.h"
 
 void sTemplateNPC::LearnPlateMailSpells(Player* player)
 {
@@ -654,21 +655,21 @@ public:
             player->SetFullHealth();
 
             // Learn Riding/Flying
-            if (player->HasSpell(SPELL_Artisan_Riding) ||
-                player->HasSpell(SPELL_Cold_Weather_Flying) ||
-                player->HasSpell(SPELL_Amani_War_Bear) ||
-                player->HasSpell(SPELL_Teach_Learn_Talent_Specialization_Switches) ||
-                player->HasSpell(SPELL_Learn_a_Second_Talent_Specialization))
+            if (player->HasSpell(Artisan_Riding) ||
+                player->HasSpell(Cold_Weather_Flying) ||
+                player->HasSpell(Amani_War_Bear) ||
+                player->HasSpell(Teach_Learn_Talent_Specialization_Switches) ||
+                player->HasSpell(Learn_a_Second_Talent_Specialization))
                 return;
 
             // Cast spells that teach dual spec
             // Both are also ImplicitTarget self and must be cast by player
-            player->CastSpell(player, SPELL_Teach_Learn_Talent_Specialization_Switches, player->GetGUID());
-            player->CastSpell(player, SPELL_Learn_a_Second_Talent_Specialization, player->GetGUID());
+            player->CastSpell(player, Teach_Learn_Talent_Specialization_Switches, player->GetGUID());
+            player->CastSpell(player, Learn_a_Second_Talent_Specialization, player->GetGUID());
 
-            player->LearnSpell(SPELL_Artisan_Riding, false);
-            player->LearnSpell(SPELL_Cold_Weather_Flying, false);
-            player->LearnSpell(SPELL_Amani_War_Bear, false);
+            player->LearnSpell(Artisan_Riding, false);
+            player->LearnSpell(Cold_Weather_Flying, false);
+            player->LearnSpell(Amani_War_Bear, false);
 
         }
 
@@ -698,21 +699,21 @@ public:
             player->GetSession()->SendAreaTriggerMessage("Successfuly learned talent spec %s!", playerSpecStr.c_str());
 
             // Learn Riding/Flying
-            if (player->HasSpell(SPELL_Artisan_Riding) ||
-                player->HasSpell(SPELL_Cold_Weather_Flying) ||
-                player->HasSpell(SPELL_Amani_War_Bear) ||
-                player->HasSpell(SPELL_Teach_Learn_Talent_Specialization_Switches) ||
-                player->HasSpell(SPELL_Learn_a_Second_Talent_Specialization))
+            if (player->HasSpell(Artisan_Riding) ||
+                player->HasSpell(Cold_Weather_Flying) ||
+                player->HasSpell(Amani_War_Bear) ||
+                player->HasSpell(Teach_Learn_Talent_Specialization_Switches) ||
+                player->HasSpell(Learn_a_Second_Talent_Specialization))
                 return;
 
             // Cast spells that teach dual spec
             // Both are also ImplicitTarget self and must be cast by player
-            player->CastSpell(player, SPELL_Teach_Learn_Talent_Specialization_Switches, player->GetGUID());
-            player->CastSpell(player, SPELL_Learn_a_Second_Talent_Specialization, player->GetGUID());
+            player->CastSpell(player, Teach_Learn_Talent_Specialization_Switches, player->GetGUID());
+            player->CastSpell(player, Learn_a_Second_Talent_Specialization, player->GetGUID());
 
-            player->LearnSpell(SPELL_Artisan_Riding, false);
-            player->LearnSpell(SPELL_Cold_Weather_Flying, false);
-            player->LearnSpell(SPELL_Amani_War_Bear, false);
+            player->LearnSpell(Artisan_Riding, false);
+            player->LearnSpell(Cold_Weather_Flying, false);
+            player->LearnSpell(Amani_War_Bear, false);
         }
 
         bool GossipSelect(Player* player, uint32 /*uiSender*/, uint32 uiAction) override
@@ -968,7 +969,73 @@ public:
     }
 };
 
+class TemplateNPC_World : public WorldScript
+{
+public:
+    TemplateNPC_World() : WorldScript("TemplateNPC_World") { }
+
+    void OnStartup() override
+    {
+        // Load templates for Template NPC #1
+        TC_LOG_INFO("server.loading", "== TEMPLATE NPC ===========================================================================");
+        TC_LOG_INFO("server.loading", "Loading Template Talents...");
+        sTemplateNpcMgr->LoadTalentsContainer();
+
+        // Load templates for Template NPC #2
+        TC_LOG_INFO("server.loading", "Loading Template Glyphs...");
+        sTemplateNpcMgr->LoadGlyphsContainer();
+
+        // Load templates for Template NPC #3
+        TC_LOG_INFO("server.loading", "Loading Template Gear for Humans...");
+        sTemplateNpcMgr->LoadHumanGearContainer();
+
+        // Load templates for Template NPC #4
+        TC_LOG_INFO("server.loading", "Loading Template Gear for Alliances...");
+        sTemplateNpcMgr->LoadAllianceGearContainer();
+
+        // Load templates for Template NPC #5
+        TC_LOG_INFO("server.loading", "Loading Template Gear for Hordes...");
+        sTemplateNpcMgr->LoadHordeGearContainer();
+        TC_LOG_INFO("server.loading", "== END TEMPLATE NPC ===========================================================================");
+    }
+};
+
+class TemplateNPC_command : public CommandScript
+{
+public:
+    TemplateNPC_command() : CommandScript("TemplateNPC_command") { }
+
+    std::vector<ChatCommand> GetCommands() const override
+    {
+        static std::vector<ChatCommand> TemplateNPCTable =
+        {
+            { "reload",      SEC_ADMINISTRATOR, true , &HandleReloadTemplateNPCCommand, "" }
+        };
+
+        static std::vector<ChatCommand> commandTable =
+        {
+            { "templatenpc", SEC_ADMINISTRATOR, true, nullptr                         , "", TemplateNPCTable }
+        };
+        return commandTable;
+    }
+
+
+    static bool HandleReloadTemplateNPCCommand(ChatHandler* handler, const char* /*args*/)
+    {
+        TC_LOG_INFO("server.loading", "misc", "Reloading templates for Template NPC table...");
+        sTemplateNpcMgr->LoadTalentsContainer();
+        sTemplateNpcMgr->LoadGlyphsContainer();
+        sTemplateNpcMgr->LoadHumanGearContainer();
+        sTemplateNpcMgr->LoadAllianceGearContainer();
+        sTemplateNpcMgr->LoadHordeGearContainer();
+        handler->SendGlobalGMSysMessage("Template NPC templates reloaded.");
+        return true;
+    }
+};
+
 void AddSC_TemplateNPC()
 {
     new TemplateNPC();
+    new TemplateNPC_World();
+    new TemplateNPC_command();
 }
