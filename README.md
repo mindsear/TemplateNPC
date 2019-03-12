@@ -8,7 +8,8 @@ Copy **TemplateNPC.cpp** and **TemplateNPC.h** to your **TemplateNPC** folder yo
 2. Add TemplateNPC to \src\server\scripts\Custom\ **custom_script_loader.cpp**  (https://i.ibb.co/VHm8PjH/custom-script-loader.png)
 3. Use CMake (configure and generate)  
 4. Execute **characters.sql** to your database  
-5. Open TrinityCore.sln and Build the solution (Ctrl+Shift+B)  
+5. Open TrinityCore.sln and Build the solution. Press **Build** and then **Build Solution** (Ctrl+Shift+B)  
+![alt_tag](https://i.ibb.co/R2m3Rwy/build-solution.png)
   
 
   
