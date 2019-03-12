@@ -1,15 +1,17 @@
-#pragma once
 #ifndef TALENT_FUNCTIONS_H
 #define TALENT_FUNCTIONS_H
 
 #include "Define.h"
 #include "Player.h"
 
-#define SPELL_Amani_War_Bear 43688
-#define SPELL_Artisan_Riding 34091
-#define SPELL_Cold_Weather_Flying 54197
-#define SPELL_Teach_Learn_Talent_Specialization_Switches 63680
-#define SPELL_Learn_a_Second_Talent_Specialization 63624
+enum Spells
+{
+    Amani_War_Bear = 43688,
+    Artisan_Riding = 34091,
+    Cold_Weather_Flying = 54197,
+    Teach_Learn_Talent_Specialization_Switches = 63680,
+    Learn_a_Second_Talent_Specialization = 63624
+};
 
 enum templateSpells
 {
