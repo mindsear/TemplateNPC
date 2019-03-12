@@ -16,7 +16,7 @@ Copy **TemplateNPC.cpp** and **TemplateNPC.h** to your **TemplateNPC** folder yo
 
 **4.** Execute **characters.sql** to your database<br/>
 
-**5.** Open TrinityCore.sln and Build the solution. Press **Build** and then **Build Solution** (Ctrl+Shift+B)<br/>
+**5.** Open TrinityCore.sln and Build the solution. Click on **Build** and then **Build Solution** or press (Ctrl+Shift+B)<br/>
 
 ![alt_tag](https://i.ibb.co/R2m3Rwy/build-solution.png)  
   
