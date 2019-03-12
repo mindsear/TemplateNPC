@@ -220,7 +220,6 @@ void sTemplateNPC::LoadGlyphsContainer()
         m_GlyphContainer.push_back(pGlyph);
         ++count;
     } while (result->NextRow());
-    TC_LOG_INFO("server.worldserver", "== TEMPLATE NPC ===========================================================================");
     TC_LOG_INFO("server.worldserver", ">>TEMPLATE NPC: Loaded %u glyph templates in %u ms.", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
@@ -345,7 +344,6 @@ void sTemplateNPC::LoadHordeGearContainer()
         ++count;
     } while (result->NextRow());
     TC_LOG_INFO("server.worldserver", ">>TEMPLATE NPC: Loaded %u gear templates for Hordes in %u ms.", count, GetMSTimeDiffToNow(oldMSTime));
-    TC_LOG_INFO("server.worldserver", "== TEMPLATE NPC ===========================================================================");
 }
 
 std::string sTemplateNPC::GetClassString(Player* player)
