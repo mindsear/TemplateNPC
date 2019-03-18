@@ -10,7 +10,7 @@ Copy **TemplateNPC.cpp** and **TemplateNPC.h** to your **TemplateNPC** folder yo
 
 **2.** Add TemplateNPC to \src\server\scripts\Custom\ **custom_script_loader.cpp**<br/>
 
-![alt_tag](https://i.ibb.co/VHm8PjH/custom-script-loader.png)<br/>
+![alt_tag](https://i.imgur.com/kNRA3Au.png)<br/>
 
 **3.** Use CMake (configure and generate)<br/>
 
